@@ -2,39 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* UC Faculty Transparency Report Design System */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 215 16% 21%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 16% 21%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 16% 21%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* UC Blue Color Palette */
+    --primary: 218 100% 25%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 218 100% 35%;
+    --primary-lighter: 218 100% 90%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 215 16% 21%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 13% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 45 100% 51%;
+    --accent-foreground: 215 16% 21%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 218 100% 25%;
+
+    /* Academic Report Colors */
+    --chart-1: 218 100% 25%; /* UC Blue */
+    --chart-2: 45 100% 51%; /* Gold */
+    --chart-3: 198 70% 50%; /* Light Blue */
+    --chart-4: 310 60% 45%; /* Purple */
+    --chart-5: 142 70% 45%; /* Green */
+    
+    /* Data Visualization Colors */
+    --salary-high: 0 72% 51%;
+    --salary-medium: 45 100% 51%;
+    --salary-low: 142 70% 45%;
+    
+    /* Report Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-card: linear-gradient(180deg, hsl(var(--background)), hsl(var(--secondary)));
+    
+    /* Typography */
+    --font-heading: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    /* Shadows */
+    --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-chart: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    
+    /* Transitions */
+    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
@@ -100,6 +129,40 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .report-section {
+    @apply bg-card rounded-lg border shadow-[var(--shadow-card)] p-6;
+  }
+  
+  .chart-container {
+    @apply bg-card rounded-lg border shadow-[var(--shadow-chart)] p-4;
+  }
+  
+  .data-metric {
+    @apply text-center p-4 bg-secondary/50 rounded-lg border;
+  }
+  
+  .stat-large {
+    @apply text-3xl font-bold text-primary;
+  }
+  
+  .stat-medium {
+    @apply text-xl font-semibold text-foreground;
+  }
+  
+  .year-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary;
+  }
+  
+  .department-tag {
+    @apply inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-muted text-muted-foreground;
   }
 }
